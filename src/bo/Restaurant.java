@@ -81,7 +81,8 @@ public class Restaurant {
 	@Override
 	public String toString() {
 		
-		return this.nom + " - " +
+		return "ID :" + this.id + " - " +
+				this.nom + " - " +
 				this.adresse + " - " +
 				"ouvert de : " + this.heureOuverture + " " +
 				"jusqu'à" + this.heureFermeture;
