@@ -20,11 +20,11 @@ public class TestRestaurant {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-		
-		scan = new Scanner(System.in);
-//		listerRestaurant();
-		creerRestaurant();
 
+		scan = new Scanner(System.in);
+		// listerRestaurant();
+		// creerRestaurant();
+		trouverRestaurantParID();
 	}
 
 	private static void listerRestaurant() {
@@ -37,22 +37,22 @@ public class TestRestaurant {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private static void creerRestaurant() {
 		System.out.println("Vous avez choisi d'ajouter un restaurant");
-		
+
 		System.out.println("Veuillez saisir son nom");
 		String nom = scan.nextLine();
-		
+
 		System.out.println("Veuillez saisir son adresse");
 		String adresse = scan.nextLine();
-		
+
 		System.out.println("Veuillez saisir l'heure d'ouverture (hh:mm)");
 		String heureOuvertureStr = scan.nextLine();
-		
+
 		System.out.println("Veuillez saisir l'heure de fermeture (hh:mm)");
 		String heureFermetureStr = scan.nextLine();
-		
+
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
 		LocalTime heureOuverture = null;
 		LocalTime heureFermeture = null;
@@ -62,7 +62,7 @@ public class TestRestaurant {
 		} catch (DateTimeParseException e) {
 			System.out.println("La date n'est pas au bon format hh:mm");
 		}
-		
+
 		try {
 			bll.insert(nom, adresse, heureOuverture, heureFermeture);
 			System.out.println("Restaurant ajouté");
@@ -72,7 +72,20 @@ public class TestRestaurant {
 				System.out.println("\t" + erreur);
 			}
 		}
-		
+
 	}
-	
+
+	private static void trouverRestaurantParID() {
+		System.out.println("Vous avez choisi de chercher un restaurant par son ID");
+
+		System.out.println("Veuillez saisir son ID");
+		int id = scan.nextInt();
+		scan.nextLine();
+		try {
+			Restaurant rest = bll.selectById(id);
+			System.out.println(rest);
+		} catch (BLLException e) {
+			System.out.println(e.getMessage());;
+		}
+	}
 }
