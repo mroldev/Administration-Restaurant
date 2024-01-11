@@ -10,7 +10,6 @@ public class Carte {
 	}
 
 	public Carte(String nom, int idRestaurant) {
-		super();
 		this.nom = nom;
 		this.idRestaurant = idRestaurant;
 	}
@@ -19,6 +18,11 @@ public class Carte {
 		this.id = id;
 		this.nom = nom;
 		this.idRestaurant = idRestaurant;
+	}
+
+
+	public Carte(String nom) {
+		this.nom = nom;
 	}
 
 	public int getId() {
@@ -44,5 +48,12 @@ public class Carte {
 	public void setIdRestaurant(int idRestaurant) {
 		this.idRestaurant = idRestaurant;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Carte [id=" + id + ", nom=" + nom + ", idRestaurant=" + idRestaurant + "]";
+	}
+
 
 }
