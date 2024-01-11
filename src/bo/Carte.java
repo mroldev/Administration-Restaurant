@@ -19,6 +19,24 @@ public class Carte {
 		this.nom = nom;
 		this.idRestaurant = idRestaurant;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public int getIdRestaurant() {
+		return idRestaurant;
+	}
+	public void setIdRestaurant(int idRestaurant) {
+		this.idRestaurant = idRestaurant;
+	}
 	
 	
 }

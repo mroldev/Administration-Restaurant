@@ -7,39 +7,35 @@ public class Plat {
 	private String description;
 	private String categorie;
 	private String image_plat_url;
-	// id_carte
-
-//constructor
-
+	private Carte carte; // id_carte
+	
+	//constructor
 	public Plat() {
+		super();
 	}
 
-	public Plat(String nom, int prix, String description, String categorie, String image_plat_url) {
-		this.nom = nom;
-		this.prix = prix;
-		this.description = description;
-		this.categorie = categorie;
-		this.image_plat_url = image_plat_url;
-	}
-	public Plat(String nom, int prix, String description, String categorie) {
+	public Plat(String nom, int prix, String description, String categorie, String image_plat_url, Carte carte) {
 		super();
 		this.nom = nom;
 		this.prix = prix;
 		this.description = description;
 		this.categorie = categorie;
+		this.image_plat_url = image_plat_url;
+		this.carte = carte;
 	}
-	public Plat(int id, String nom, int prix, String description, String categorie, String image_plat_url) {
+
+	public Plat(int id, String nom, int prix, String description, String categorie, String image_plat_url,
+			Carte carte) {
+		super();
 		this.id = id;
 		this.nom = nom;
 		this.prix = prix;
 		this.description = description;
 		this.categorie = categorie;
 		this.image_plat_url = image_plat_url;
+		this.carte = carte;
 	}
-
-
-
-
+	
 	//data
 	public int getId() {
 		return id;
@@ -89,6 +85,28 @@ public class Plat {
 		this.image_plat_url = image_plat_url;
 	}
 
-//toString
+	public Carte getCarte() {
+		return carte;
+	}
+
+	public void setCarte(Carte carte) {
+		this.carte = carte;
+	}
+	//toString
+	@Override
+	public String toString() {
+		return "Plat [id=" + id + ", nom=" + nom + ", prix=" + prix + ", description=" + description + ", categorie="
+				+ categorie + ", image_plat_url=" + image_plat_url + ", carte=" + carte + "]";
+	}
+	
+
+
+	
+
+
+
+	
+	
+	
 
 }
