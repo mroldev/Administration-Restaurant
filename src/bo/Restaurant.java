@@ -20,6 +20,14 @@ public class Restaurant {
 		this.heureFermeture = heureFermeture;
 	}
 
+	public Restaurant(int id, String nom, String adresse, LocalTime heureOuverture, LocalTime heureFermeture) {
+		this.id = id;
+		this.nom = nom;
+		this.adresse = adresse;
+		this.heureOuverture = heureOuverture;
+		this.heureFermeture = heureFermeture;
+	}
+
 	public Restaurant(int id, String nom, String adresse, LocalTime heureOuverture, LocalTime heureFermeture,
 			String imageRestaurantUrl) {
 		this.id = id;
@@ -80,12 +88,9 @@ public class Restaurant {
 
 	@Override
 	public String toString() {
-		
-		return "ID :" + this.id + " - " +
-				this.nom + " - " +
-				this.adresse + " - " +
-				"ouvert de : " + this.heureOuverture + " " +
-				"jusqu'à " + this.heureFermeture;
+
+		return "ID :" + this.id + " - " + this.nom + " - " + this.adresse + " - " + "ouvert de : " + this.heureOuverture
+				+ " " + "jusqu'à " + this.heureFermeture;
 	}
-	
+
 }
