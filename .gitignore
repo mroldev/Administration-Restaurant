@@ -246,6 +246,7 @@ build/
 *#
 *~
 .classpath
+<classpath>
 .project
 .settings
 bin
