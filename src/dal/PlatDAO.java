@@ -14,7 +14,8 @@ public class PlatDAO {
 	private static final String TABLE_NAME = "plats";
 	private static final String SELECT = "SELECT * FROM " + TABLE_NAME;
 	private static final String SELECT_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE id = ?";
-
+	private static final String INSERT = "INSERT INTO" + TABLE_NAME
+			+ "(id, nom, prix, description, categorie, image_plat_url, id_carte) VALUES (?,?,?,?,?,?,?)";
 	private Connection cnx;
 
 	// Connection
@@ -77,6 +78,29 @@ public class PlatDAO {
 			throw new DALException("Impossible de recuperer les informations pour l'id " + id, e);
 		}
 		return plat;
+	}
+
+	// Insert
+	public void insert(Plat plat, Carte carte) throws DALException {
+		try {
+			PreparedStatement ps = cnx.prepareStatement(INSERT);
+			ps.setInt(1, plat.getId());
+			ps.setString(2, plat.getNom());
+			ps.setInt(3, plat.getPrix());
+			ps.setString(4, plat.getDescription());
+			ps.setString(5, plat.getCategorie());
+			ps.setString(6, plat.getImage_plat_url());
+			// ps.setInt(7, carte.getId());
+
+		} catch (SQLException e) {
+			throw new DALException("Impossible d'inserer les donnees.", e);
+		}
+
+	}
+
+	public void insert(Plat plat) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
