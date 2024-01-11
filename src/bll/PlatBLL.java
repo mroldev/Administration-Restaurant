@@ -8,7 +8,7 @@ import dal.PlatDAO;
 
 public class PlatBLL {
 	private PlatDAO dao;
-	
+
 	public PlatBLL() throws BLLException {
 		try {
 			dao = new PlatDAO();
@@ -16,7 +16,8 @@ public class PlatBLL {
 			throw new BLLException("Echec de la connexion", e);
 		}
 	}
-	//SELECT ALL
+
+	// SELECT ALL
 	public List<Plat> selectAll() throws BLLException {
 		try {
 			return dao.selectAll();
@@ -25,4 +26,14 @@ public class PlatBLL {
 
 		}
 	}
+
+	// SELECT BY ID
+	public Plat selectById(int id) throws BLLException {
+		try {
+			return dao.selectById(id);
+		} catch (DALException e) {
+			throw new BLLException("Echec de la recuperation du composant d'id " + id, e);
+		}
+	}
+
 }

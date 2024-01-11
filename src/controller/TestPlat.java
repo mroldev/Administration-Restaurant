@@ -20,8 +20,9 @@ public class TestPlat {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-		// aFFICHER PLAT
-		listerPlat();
+
+		 listerPlat();
+		selectionDeUnPlat();
 	}
 
 	private static void listerPlat() {
@@ -31,6 +32,18 @@ public class TestPlat {
 			for (Plat current : plats) {
 				System.out.println("\t" + current.getId() + ". " + current);
 			}
+		} catch (BLLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void selectionDeUnPlat() {
+		try {
+			System.out.println("Afficher les plats");
+			Plat platSelectionne = bll.selectById(22);
+			System.out.println(bll.selectById(22));
+
+			System.out.println("Plat Selectionne" + platSelectionne);
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
