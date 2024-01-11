@@ -85,7 +85,7 @@ public class Restaurant {
 				this.nom + " - " +
 				this.adresse + " - " +
 				"ouvert de : " + this.heureOuverture + " " +
-				"jusqu'à" + this.heureFermeture;
+				"jusqu'à " + this.heureFermeture;
 	}
 	
 }
