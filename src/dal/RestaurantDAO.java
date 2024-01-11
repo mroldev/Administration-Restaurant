@@ -1,7 +1,6 @@
 package dal;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,6 +19,7 @@ public class RestaurantDAO {
 	private static final String SELECT_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE id = ?";
 	private static final String UPDATE = "UPDATE " + TABLE_NAME
 			+ " SET nom = ?, adresse = ?, heure_ouverture = ?, heure_fermeture = ? WHERE id = ?";
+	private static final String DELETE = "DELETE FROM" + TABLE_NAME + " WHERE id = ?";
 
 	private Connection cnx;
 
@@ -106,6 +106,19 @@ public class RestaurantDAO {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			throw new DALException("Impossible de mettre a jour les informations pour l'id " + restaurant.getId(), e);
+		}
+	}
+
+	public void delete(int id) throws DALException {
+		try {
+			PreparedStatement ps = cnx.prepareStatement(DELETE);
+			ps.setInt(1, id);
+			int nbLignesSupprimees = ps.executeUpdate();
+			if (nbLignesSupprimees == 0) {
+				throw new DALException("Echec de suppression du restaurant d'id " + id, null);
+			}
+		} catch (SQLException e) {
+			throw new DALException("Impossible de supprimer le restaurant d'id " + id, e);
 		}
 	}
 }

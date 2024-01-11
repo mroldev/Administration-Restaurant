@@ -96,4 +96,12 @@ public class RestaurantBLL {
 			throw new BLLException("Echec de la mise a jour", e);
 		}
 	}
+
+	public void delete(int id) throws BLLException {
+		try {
+			dao.delete(id);
+		} catch (DALException e) {
+			throw new BLLException("Echec de la suppression", e);
+		}
+	}
 }
