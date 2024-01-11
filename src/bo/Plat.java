@@ -8,14 +8,12 @@ public class Plat {
 	private String categorie;
 	private String image_plat_url;
 	private Carte carte; // id_carte
-	
-	//constructor
+
+	// constructor
 	public Plat() {
-		super();
 	}
 
 	public Plat(String nom, int prix, String description, String categorie, String image_plat_url, Carte carte) {
-		super();
 		this.nom = nom;
 		this.prix = prix;
 		this.description = description;
@@ -26,7 +24,6 @@ public class Plat {
 
 	public Plat(int id, String nom, int prix, String description, String categorie, String image_plat_url,
 			Carte carte) {
-		super();
 		this.id = id;
 		this.nom = nom;
 		this.prix = prix;
@@ -35,8 +32,8 @@ public class Plat {
 		this.image_plat_url = image_plat_url;
 		this.carte = carte;
 	}
-	
-	//data
+
+	// data
 	public int getId() {
 		return id;
 	}
@@ -92,21 +89,12 @@ public class Plat {
 	public void setCarte(Carte carte) {
 		this.carte = carte;
 	}
-	//toString
+
+	// toString
 	@Override
 	public String toString() {
 		return "Plat [id=" + id + ", nom=" + nom + ", prix=" + prix + ", description=" + description + ", categorie="
 				+ categorie + ", image_plat_url=" + image_plat_url + ", carte=" + carte + "]";
 	}
-	
-
-
-	
-
-
-
-	
-	
-	
 
 }
