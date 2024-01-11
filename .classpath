@@ -6,11 +6,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/Administrateur/Desktop/GROUPE CHAT/Administration-Restaurant/libra/activation-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrateur/Desktop/GROUPE CHAT/Administration-Restaurant/libra/jaxb-api-2.2.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrateur/Desktop/GROUPE CHAT/Administration-Restaurant/libra/jaxb-core-2.2.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrateur/Desktop/GROUPE CHAT/Administration-Restaurant/libra/jaxb-impl-2.2.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrateur/Desktop/GROUPE CHAT/Administration-Restaurant/libra/sqljdbc42.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Administrateur/Desktop/GROUPE CHAT/Administration-Restaurant/libra/validation-api-1.1.0.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrateur/Desktop/POEI - JAVA/JAVA SE/version1/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrateur/Desktop/POEI - JAVA/JAVA SE/version1/jaxb-api-2.2.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrateur/Desktop/POEI - JAVA/JAVA SE/version1/jaxb-core-2.2.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrateur/Desktop/POEI - JAVA/JAVA SE/version1/jaxb-impl-2.2.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrateur/Desktop/POEI - JAVA/JAVA SE/version1/sqljdbc42.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrateur/Desktop/POEI - JAVA/JAVA SE/version1/validation-api-1.1.0.Final.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

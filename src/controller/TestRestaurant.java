@@ -2,6 +2,7 @@ package controller;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -53,8 +54,14 @@ public class TestRestaurant {
 		String heureFermetureStr = scan.nextLine();
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-		LocalTime heureOuverture = LocalTime.parse(heureOuvertureStr, dtf);
-		LocalTime heureFermeture = LocalTime.parse(heureFermetureStr, dtf);
+		LocalTime heureOuverture = null;
+		LocalTime heureFermeture = null;
+		try {
+			heureOuverture = LocalTime.parse(heureOuvertureStr, dtf);
+			heureFermeture = LocalTime.parse(heureFermetureStr, dtf);
+		} catch (DateTimeParseException e) {
+			System.out.println("La date n'est pas au bon format hh:mm");
+		}
 		
 		try {
 			bll.insert(nom, adresse, heureOuverture, heureFermeture);
