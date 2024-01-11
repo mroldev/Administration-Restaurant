@@ -20,6 +20,7 @@ public class Carte {
 		this.idRestaurant = idRestaurant;
 	}
 
+
 	public Carte(String nom) {
 		this.nom = nom;
 	}
@@ -48,9 +49,11 @@ public class Carte {
 		this.idRestaurant = idRestaurant;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Carte [id=" + id + ", nom=" + nom + ", idRestaurant=" + idRestaurant + "]";
 	}
+
 
 }
