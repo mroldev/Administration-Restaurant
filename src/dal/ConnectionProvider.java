@@ -15,6 +15,6 @@ public abstract class ConnectionProvider {
 		} catch (SQLException e) {
 			throw new DALException("Erreur de connexion a la base de donnees", e);
 		}
-	}			
+	}
 
 }
