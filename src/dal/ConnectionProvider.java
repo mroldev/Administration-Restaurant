@@ -16,4 +16,5 @@ public abstract class ConnectionProvider {
 			throw new DALException("Erreur de connexion a la base de donnees", e);
 		}
 	}
+
 }
