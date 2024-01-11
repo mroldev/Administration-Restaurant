@@ -1,6 +1,7 @@
 package dal;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +18,8 @@ public class RestaurantDAO {
 	private static final String INSERT = "INSERT INTO " + TABLE_NAME
 			+ " (nom, adresse, heure_ouverture, heure_fermeture) VALUES (?,?,?,?)";
 	private static final String SELECT_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE id = ?";
+	private static final String UPDATE = "UPDATE " + TABLE_NAME
+			+ " SET nom = ?, adresse = ?, heure_ouverture = ?, heure_fermeture = ? WHERE id = ?";
 
 	private Connection cnx;
 
@@ -92,4 +95,17 @@ public class RestaurantDAO {
 		return restaurant;
 	}
 
+	public void update(Restaurant restaurant) throws DALException {
+		try {
+			PreparedStatement ps = cnx.prepareStatement(UPDATE);
+			ps.setString(1, restaurant.getNom());
+			ps.setString(2, restaurant.getAdresse());
+			ps.setTime(3, Time.valueOf(restaurant.getHeureOuverture()));
+			ps.setTime(4, Time.valueOf(restaurant.getHeureFermeture()));
+			ps.setInt(5, restaurant.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			throw new DALException("Impossible de mettre a jour les informations pour l'id " + restaurant.getId(), e);
+		}
+	}
 }
