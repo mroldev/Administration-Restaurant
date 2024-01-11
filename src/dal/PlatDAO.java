@@ -51,7 +51,7 @@ public class PlatDAO {
 
 	// Select ById
 	public Plat selectById(int id) throws DALException {
-		Plat plat = new Plat();
+		Plat plat = null;
 
 		PreparedStatement ps;
 		try {
@@ -68,11 +68,11 @@ public class PlatDAO {
 				plat.setCategorie(rs.getString("categorie"));
 				plat.setImage_plat_url(rs.getString("image_plat_url"));
 				carte.setId(rs.getInt("id_carte"));
-				
-				
-				
 
 			}
+			if (plat == null)
+				throw new DALException("Aucun plat avec l", null);
+
 		} catch (SQLException e) {
 			throw new DALException("Impossible de recuperer les informations pour l'id " + id, e);
 		}
