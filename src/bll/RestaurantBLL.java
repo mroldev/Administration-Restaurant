@@ -58,4 +58,12 @@ public class RestaurantBLL {
 			throw new BLLException("Echec de l'insertion", e);
 		}
 	}
+	
+	public Restaurant selectById(int id) throws BLLException {
+		try {
+			return dao.selectById(id);
+		} catch (DALException e) {
+			throw new BLLException("Echec de la recuperation du composant d'id " + id, e);
+		}
+	}
 }
