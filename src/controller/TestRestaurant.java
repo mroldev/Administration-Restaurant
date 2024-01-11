@@ -25,7 +25,8 @@ public class TestRestaurant {
 		// listerRestaurant();
 		// creerRestaurant();
 		// trouverRestaurantParID();
-		modifierRestaurant();
+		// modifierRestaurant();
+		supprimerRestaurant();
 	}
 
 	private static void listerRestaurant() {
@@ -134,6 +135,20 @@ public class TestRestaurant {
 		} catch (DateTimeParseException e) {
 			System.out.println("La date n'est pas au bon format hh:mm");
 		}
+	}
 
+	private static void supprimerRestaurant() {
+		System.out.println("Vous avez choisi de supprimer un restaurant");
+		System.out.println("Veuillez saisir l'id du restaurant à supprimer");
+		int id = scan.nextInt();
+		scan.nextLine();
+
+		try {
+			bll.delete(id);
+			System.out.println("Le restaurant a bien été supprimé");
+		} catch (BLLException e) {
+			System.out.println("Il est interdit de supprimer ce restaurant ou ce restaurant n'existe pas.\n"
+					+ "Pour être supprimer un restaurant ne dois plus avoir ni tables, ni carte, ni réservations, ni employés");
+		}
 	}
 }
