@@ -90,7 +90,7 @@ public class PlatDAO {
 			ps.setString(4, plat.getDescription());
 			ps.setString(5, plat.getCategorie());
 			ps.setString(6, plat.getImage_plat_url());
-			//ps.setInt(7, carte.getId()); 
+			// ps.setInt(7, carte.getId());
 
 		} catch (SQLException e) {
 			throw new DALException("Impossible d'inserer les donnees.", e);
@@ -100,8 +100,7 @@ public class PlatDAO {
 
 	public void insert(Plat plat) {
 		// TODO Auto-generated method stub
-		
-	}
 
+	}
 
 }

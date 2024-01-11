@@ -27,7 +27,7 @@ public class TestPlat {
 
 		// listerPlat();
 		// selectionDeUnPlat();
-		creerPlat();
+		// creerPlat();
 	}
 
 	// listerPlat();
