@@ -85,7 +85,8 @@ public class TestRestaurant {
 			Restaurant rest = bll.selectById(id);
 			System.out.println(rest);
 		} catch (BLLException e) {
-			System.out.println(e.getMessage());;
+			System.out.println(e.getMessage());
+			;
 		}
 	}
 }
