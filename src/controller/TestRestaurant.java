@@ -20,10 +20,10 @@ public class TestRestaurant {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-		
+
 		scan = new Scanner(System.in);
-		//listerRestaurant();
-		//creerRestaurant();
+		// listerRestaurant();
+		// creerRestaurant();
 		trouverRestaurantParID();
 	}
 
@@ -85,7 +85,7 @@ public class TestRestaurant {
 			Restaurant rest = bll.selectById(id);
 			System.out.println(rest);
 		} catch (BLLException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());;
 		}
 	}
 }
