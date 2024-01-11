@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,8 @@ public class RestaurantDAO {
 	private static final String TABLE_NAME = " restaurants ";
 
 	private static final String SELECT = "SELECT * FROM " + TABLE_NAME;
+	private static final String INSERT = "INSERT INTO " + TABLE_NAME
+			+ " (nom, adresse, heure_ouverture, heure_fermeture) VALUES (?,?,?,?)";
 
 	private Connection cnx;
 
@@ -42,6 +45,26 @@ public class RestaurantDAO {
 			throw new DALException("Impossible de recuperer les informations", e);
 		}
 		return restaurants;
+	}
 
+	public void insert(Restaurant restaurant) throws DALException {
+		try {
+			// L'ajout de RETURN_GENERATED_KEYS permet de récupérer l'id généré par la base
+			PreparedStatement ps = cnx.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
+			ps.setString(1, restaurant.getNom());
+			ps.setString(2, restaurant.getAdresse());
+			ps.setTime(3, Time.valueOf(restaurant.getHeureOuverture()));
+			ps.setTime(4, Time.valueOf(restaurant.getHeureFermeture()));
+			ps.executeUpdate();
+
+			// Le bloc suivant permet de faire la récupération de l'id
+			ResultSet rs = ps.getGeneratedKeys();
+			if (rs.next()) { // Va chercher dans le resultat, la première ligne
+				int id = rs.getInt(1); // plus précisément, le int à la première colonne
+				restaurant.setId(id);
+			}
+		} catch (SQLException e) {
+			throw new DALException("Impossible d'inserer les donnees.", e);
+		}
 	}
 }
