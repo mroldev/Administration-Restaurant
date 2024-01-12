@@ -67,6 +67,7 @@ public class PlatBLL {
 		try {
 			dao.insert(plat);
 		} catch (DALException e) {
+			e.printStackTrace();
 			throw new BLLException("Echec de l'insertion", e);
 		}
 		return plat;

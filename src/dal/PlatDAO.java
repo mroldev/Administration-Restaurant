@@ -14,7 +14,7 @@ public class PlatDAO {
 	private static final String TABLE_NAME = "plats";
 	private static final String SELECT = "SELECT * FROM " + TABLE_NAME;
 	private static final String SELECT_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE id = ?";
-	private static final String INSERT = "INSERT INTO" + TABLE_NAME
+	private static final String INSERT = "INSERT INTO " + TABLE_NAME
 			+ "( nom, prix, description, categorie, image_plat_url, id_carte) VALUES (?,?,?,?,?,?)";
 	private Connection cnx;
 

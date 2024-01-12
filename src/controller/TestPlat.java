@@ -27,7 +27,7 @@ public class TestPlat {
 
 		// listerPlat();
 		// selectionDeUnPlat();
-		creerPlat();
+		// creerPlat();
 	}
 
 	// listerPlat();
@@ -83,7 +83,6 @@ public class TestPlat {
 			id_carte = scan.nextInt();
 		} catch (java.util.InputMismatchException e) {
 			System.out.println("Erreur : Veuillez saisir un nombre entier pour l'id_carte.");
-			return; // Arrêter la méthode si l'entrée est incorrecte
 		}
 
 		try {
