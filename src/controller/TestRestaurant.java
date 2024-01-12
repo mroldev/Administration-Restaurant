@@ -13,8 +13,8 @@ import bo.Restaurant;
 public class TestRestaurant {
 	private static Scanner scan;
 	private static RestaurantBLL bll;
-
-	public static void main(String[] args) {
+	//Mettre en staic ci-dessous pour pouvoir l'utiliser
+	static {
 		try {
 			bll = new RestaurantBLL();
 		} catch (BLLException e) {
@@ -22,14 +22,11 @@ public class TestRestaurant {
 		}
 
 		scan = new Scanner(System.in);
-		// listerRestaurant();
-		 creerRestaurant();
-		// trouverRestaurantParID();
-		// modifierRestaurant();
-		//supprimerRestaurant();
 	}
 
-	private static void listerRestaurant() {
+
+
+	public static void listerRestaurant() {
 		try {
 			List<Restaurant> restaurants = bll.selectAll();
 			for (Restaurant current : restaurants) {
@@ -40,9 +37,9 @@ public class TestRestaurant {
 		}
 	}
 
-	private static void creerRestaurant() {
+	public static void creerRestaurant() {
 		System.out.println("Vous avez choisi d'ajouter un restaurant");
-
+		
 		System.out.println("Veuillez saisir son nom");
 		String nom = scan.nextLine();
 
@@ -78,7 +75,7 @@ public class TestRestaurant {
 
 	}
 
-	private static void trouverRestaurantParID() {
+	public static void trouverRestaurantParID() {
 		System.out.println("Vous avez choisi de chercher un restaurant par son ID");
 
 		System.out.println("Veuillez saisir son ID");
@@ -93,7 +90,7 @@ public class TestRestaurant {
 		}
 	}
 
-	private static void modifierRestaurant() {
+	public static void modifierRestaurant() {
 		System.out.println("Vous avez choisi de modifier un restaurant");
 
 		System.out.println("Veuillez saisir son ID");
@@ -138,7 +135,7 @@ public class TestRestaurant {
 		}
 	}
 
-	private static void supprimerRestaurant() {
+	public static void supprimerRestaurant() {
 		System.out.println("Vous avez choisi de supprimer un restaurant");
 		System.out.println("Veuillez saisir l'id du restaurant à supprimer");
 		int id = scan.nextInt();
