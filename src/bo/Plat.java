@@ -3,7 +3,7 @@ package bo;
 public class Plat {
 	private int id;
 	private String nom;
-	private int prix;
+	private String prix;
 	private String description;
 	private String categorie;
 	private String image_plat_url;
@@ -13,7 +13,7 @@ public class Plat {
 	public Plat() {
 	}
 
-	public Plat(String nom, int prix, String description, String categorie, String image_plat_url, Carte carte) {
+	public Plat(String nom, String prix, String description, String categorie, String image_plat_url, Carte carte) {
 		this.nom = nom;
 		this.prix = prix;
 		this.description = description;
@@ -22,7 +22,7 @@ public class Plat {
 		this.carte = carte;
 	}
 
-	public Plat(int id, String nom, int prix, String description, String categorie, String image_plat_url,
+	public Plat(int id, String nom, String prix, String description, String categorie, String image_plat_url,
 			Carte carte) {
 		this.id = id;
 		this.nom = nom;
@@ -50,11 +50,11 @@ public class Plat {
 		this.nom = nom;
 	}
 
-	public int getPrix() {
+	public String getPrix() {
 		return prix;
 	}
 
-	public void setPrix(int prix) {
+	public void setPrix(String prix) {
 		this.prix = prix;
 	}
 

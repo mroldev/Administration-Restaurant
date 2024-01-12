@@ -27,7 +27,7 @@ public class TestPlat {
 
 		// listerPlat();
 		// selectionDeUnPlat();
-		// creerPlat();
+		creerPlat();
 	}
 
 	// listerPlat();
@@ -45,9 +45,12 @@ public class TestPlat {
 
 	// selectionDeUnPlat();
 	private static void selectionDeUnPlat() {
+		System.out.println("Indiquer un id");
+		int id = scan.nextInt();
+		scan.nextLine();
 
 		try {
-			Plat platSelectionne = bll.selectById(2);
+			Plat platSelectionne = bll.selectById(id);
 
 			System.out.println("Plat Selectionne" + platSelectionne);
 		} catch (BLLException e) {
@@ -62,24 +65,30 @@ public class TestPlat {
 		System.out.println("Veuillez saisir son nom");
 		String nom = scan.nextLine();
 
-		System.out.println("Veuillez saisir son prix");
-		int prix = scan.nextInt();
+		System.out.println("Veuillez saisir son prix (ex :  12,2 )");
+		String prix = scan.nextLine();
 
 		System.out.println("Veuillez saisir sa description");
 		String description = scan.nextLine();
 
-		System.out.println("Veuillez saisir sa categorie");
+		System.out.println("Veuillez saisir sa categorie(ENTREE, PLAT, DESSERT ou DESSERT)");
 		String categorie = scan.nextLine();
 
 		System.out.println("Veuillez saisir son image ");
 		String image_plat_url = scan.nextLine();
 
 		System.out.println("Veuillez saisir son id_carte");
-		int id_carte = scan.nextInt();
+		int id_carte = 0;
+		try {
+			id_carte = scan.nextInt();
+		} catch (java.util.InputMismatchException e) {
+			System.out.println("Erreur : Veuillez saisir un nombre entier pour l'id_carte.");
+			return; // Arrêter la méthode si l'entrée est incorrecte
+		}
 
 		try {
-			Carte carte = carteBll.selectById(id_carte);
-			Plat platAjoute = bll.insert(nom, prix, description, categorie, image_plat_url, carte);
+			Carte carteid = carteBll.selectById(id_carte);
+			Plat platAjoute = bll.insert(nom, prix, description, categorie, image_plat_url, carteid);
 			System.out.println("Plat ajouté" + platAjoute);
 
 		} catch (BLLException e) {
@@ -87,7 +96,7 @@ public class TestPlat {
 			for (String erreur : e.getErreurs()) {
 				System.out.println("\t" + erreur);
 			}
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 
