@@ -26,7 +26,7 @@ public class RestaurantBLL {
 		}
 	}
 
-	public void insert(String nom, String adresse, LocalTime heureOuverture, LocalTime heureFermeture)
+	public Restaurant insert(String nom, String adresse, LocalTime heureOuverture, LocalTime heureFermeture)
 			throws BLLException {
 
 		BLLException blleException = new BLLException();
@@ -57,6 +57,7 @@ public class RestaurantBLL {
 		} catch (DALException e) {
 			throw new BLLException("Echec de l'insertion", e);
 		}
+		return restaurant;
 	}
 
 	public Restaurant selectById(int id) throws BLLException {
