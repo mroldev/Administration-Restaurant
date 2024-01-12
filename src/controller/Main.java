@@ -2,19 +2,23 @@ package controller;
 
 import java.util.Scanner;
 
+import bo.Restaurant;
+import controller.TestRestaurant;
+
 public class Main {
 	private static Scanner scan;
 
 	public static void main(String[] args) {
 		System.out.println("Bienvenue dans notre application Administration restaurant");
 		scan = new Scanner(System.in);
+		
 		System.out.println("Veuillez choisir l'action à réaliser");
 		int choix;
 		do {
 			choix = afficherMenu();
 			switch (choix) {
 			case 1:
-				System.out.println("1. Ajouter un restaurant");
+				TestRestaurant.creerRestaurant();
 				break;
 			case 2:
 				System.out.println("2. Modifier un restaurant existant");
