@@ -25,7 +25,7 @@ public class CarteBLL {
 			throw new BLLException("Echec de la recuperation des Restaurants", e);
 		}
 	}
-	
+
 	public Carte selectById(int id) throws BLLException {
 		try {
 			return dao.selectById(id);
@@ -33,6 +33,5 @@ public class CarteBLL {
 			throw new BLLException("Echec de la recuperation du composant d'id " + id, e);
 		}
 	}
-	
 
 }
