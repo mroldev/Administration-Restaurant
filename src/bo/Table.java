@@ -24,4 +24,52 @@ public class Table {
 		this.etat = etat;
 		this.idRestaurant = idRestaurant;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public int getNombrePlace() {
+		return nombrePlace;
+	}
+
+	public void setNombrePlace(int nombrePlace) {
+		this.nombrePlace = nombrePlace;
+	}
+
+	public String getEtat() {
+		return etat;
+	}
+
+	public void setEtat(String etat) {
+		this.etat = etat;
+	}
+
+	public int getIdRestaurant() {
+		return idRestaurant;
+	}
+
+	public void setIdRestaurant(int idRestaurant) {
+		this.idRestaurant = idRestaurant;
+	}
+
+	@Override
+	public String toString() {
+		return "Table id : " + id + ", numero table " + numero + ", nombre de places : " + nombrePlace + ", etat : " + etat
+				+ ", appartenant au Restaurant ayant l'id : " + idRestaurant;
+	}
+	
+	
 }
