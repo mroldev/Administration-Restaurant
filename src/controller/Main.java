@@ -19,6 +19,7 @@ public class Main {
 			switch (choix) {
 			case 1:
 				TestRestaurant.creerRestaurant();
+				// Rajouter le Do While s'il y a des erreures dans la saisie pour que l'utilisateur puisse refaire sa saisie
 				break;
 			case 2:
 				System.out.println("2. Modifier un restaurant existant");

@@ -135,6 +135,8 @@ public class TestPlat {
 		try {
 			Carte idcarte = carteBll.selectById(id_carte);
 			Plat plat = bll.selectById(id);
+			
+		
 			plat.setNom(nom);
 			plat.setPrix(prix);
 			plat.setDescription(description);
