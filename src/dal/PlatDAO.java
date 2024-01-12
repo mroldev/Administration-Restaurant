@@ -14,8 +14,8 @@ public class PlatDAO {
 	private static final String TABLE_NAME = "plats";
 	private static final String SELECT = "SELECT * FROM " + TABLE_NAME;
 	private static final String SELECT_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE id = ?";
-	private static final String INSERT = "INSERT INTO" + TABLE_NAME
-			+ "(id, nom, prix, description, categorie, image_plat_url, id_carte) VALUES (?,?,?,?,?,?,?)";
+	private static final String INSERT = "INSERT INTO " + TABLE_NAME
+			+ "( nom, prix, description, categorie, image_plat_url, id_carte) VALUES (?,?,?,?,?,?)";
 	private Connection cnx;
 
 	// Connection
@@ -35,7 +35,7 @@ public class PlatDAO {
 				Carte carte = new Carte();
 				plat.setId(rs.getInt("id"));
 				plat.setNom(rs.getString("nom"));
-				plat.setPrix(rs.getInt("prix"));
+				plat.setPrix(rs.getString("prix"));
 				plat.setDescription(rs.getString("description"));
 				plat.setCategorie(rs.getString("categorie"));
 				plat.setImage_plat_url(rs.getString("image_plat_url"));
@@ -64,7 +64,7 @@ public class PlatDAO {
 				Carte carte = new Carte();
 				plat.setId(rs.getInt("id"));
 				plat.setNom(rs.getString("nom"));
-				plat.setPrix(rs.getInt("prix"));
+				plat.setPrix(rs.getString("prix"));
 				plat.setDescription(rs.getString("description"));
 				plat.setCategorie(rs.getString("categorie"));
 				plat.setImage_plat_url(rs.getString("image_plat_url"));
@@ -81,24 +81,28 @@ public class PlatDAO {
 	}
 
 	// Insert
-	public void insert(Plat plat, Carte carte) throws DALException {
+	public void insert(Plat plat) throws DALException {
 		try {
-			PreparedStatement ps = cnx.prepareStatement(INSERT);
-			ps.setInt(1, plat.getId());
-			ps.setString(2, plat.getNom());
-			ps.setInt(3, plat.getPrix());
-			ps.setString(4, plat.getDescription());
-			ps.setString(5, plat.getCategorie());
-			ps.setString(6, plat.getImage_plat_url());
-			// ps.setInt(7, carte.getId());
+			// L'ajout de RETURN_GENERATED_KEYS permet de récupérer l'id généré par la base
 
+			PreparedStatement ps = cnx.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
+			ps.setString(1, plat.getNom());
+			ps.setString(2, plat.getPrix());
+			ps.setString(3, plat.getDescription());
+			ps.setString(4, plat.getCategorie());
+			ps.setString(5, plat.getImage_plat_url());
+			ps.setInt(6, plat.getCarte().getId());
+			ps.executeUpdate();
+
+			// Le bloc suivant permet de faire la récupération de l'id
+			ResultSet rs = ps.getGeneratedKeys();
+			if (rs.next()) { // Va chercher dans le resultat, la première ligne
+				int id = rs.getInt(1); // plus précisément, le int à la première colonne
+				plat.setId(id);
+			}
 		} catch (SQLException e) {
 			throw new DALException("Impossible d'inserer les donnees.", e);
 		}
-
-	}
-
-	public void insert(Plat plat) {
 
 	}
 
