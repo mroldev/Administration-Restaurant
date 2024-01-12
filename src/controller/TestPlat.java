@@ -28,7 +28,7 @@ public class TestPlat {
 		// listerPlat();
 		// creerPlat();
 		// trouverPlatParID();
-		// modifierPlat();
+		 modifierPlat();
 
 
 	}

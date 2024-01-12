@@ -74,13 +74,35 @@ public class PlatBLL {
 	}
 
 	// UPDATE
-	public void update(Plat plat) throws BLLException {
+	public void update( Plat plat ) throws BLLException {
+		BLLException blleException = new BLLException();
+		
+		if (plat.getNom().length() > 30) {
+			blleException.ajouterErreur("Le nom doit faire au maximum 30 caractères");
+		}
+		if (plat.getDescription().length() > 255) {
+			blleException.ajouterErreur("Le nom doit faire au maximum 255 caractères");
+		}
 
+		List<String> valeursValides = Arrays.asList("ENTREE", "PLAT", "DESSERT", "DESSERT");
+		if (!valeursValides.contains(plat.getCategorie())) {
+			blleException.ajouterErreur("La categorie du plat doit valoir ENTREE, PLAT, DESSERT ou DESSERT");
+		}
+		if (plat.getImage_plat_url().length() > 255) {
+			blleException.ajouterErreur("L'image doit faire au maximum 255 caractères");
+		}
+		if (blleException.getErreurs().size() > 0) {
+			throw blleException;
+		}
+
+		
 		try {
 			dao.update(plat);
 		} catch (DALException e) {
 			throw new BLLException("Echec de la mise a jour du plat", e);
 		}
 	}
+	//DELETE
+	
 
 }
