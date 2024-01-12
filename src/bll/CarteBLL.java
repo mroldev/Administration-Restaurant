@@ -61,4 +61,26 @@ public class CarteBLL {
 		return carte;
 
 	}
+	
+	 // UPDATE
+	public void update(Carte carte) throws BLLException {
+		BLLException blleException = new BLLException();
+
+		if (carte.getNom().length() < 2) {
+			blleException.ajouterErreur("Le nom du restaurant doit faire au moins 2 caractères");
+		}
+
+		if (carte.getNom().length() > 100) {
+			blleException.ajouterErreur("Le nom doit faire maximum 100 caractères");
+		}		
+
+		if (blleException.getErreurs().size() > 0) {
+			throw blleException;
+		}
+		try {
+			dao.update(carte);
+		} catch (DALException e) {
+			throw new BLLException("Echec de la mise a jour de carte", e);
+		}
+	}
 }
