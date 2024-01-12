@@ -74,9 +74,9 @@ public class PlatBLL {
 	}
 
 	// UPDATE
-	public void update( Plat plat ) throws BLLException {
+	public void update(Plat plat) throws BLLException {
 		BLLException blleException = new BLLException();
-		
+
 		if (plat.getNom().length() > 30) {
 			blleException.ajouterErreur("Le nom doit faire au maximum 30 caractères");
 		}
@@ -95,14 +95,20 @@ public class PlatBLL {
 			throw blleException;
 		}
 
-		
 		try {
 			dao.update(plat);
 		} catch (DALException e) {
 			throw new BLLException("Echec de la mise a jour du plat", e);
 		}
 	}
-	//DELETE
-	
+	// DELETE
+
+	public void delete(int id) throws BLLException {
+		try {
+			dao.delete(id);
+		} catch (DALException e) {
+			throw new BLLException("Echec de la suppression du plat", e);
+		}
+	}
 
 }
