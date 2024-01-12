@@ -21,9 +21,9 @@ public class TestCarte {
 			e.printStackTrace();
 		}
 		scan = new Scanner(System.in);
-	 // listerCartes(); 
-	creerCarte();
-		//trouverCarteParID();
+		// listerCartes();
+		creerCarte();
+		// trouverCarteParID();
 	}
 
 	private static void listerCartes() {
@@ -53,31 +53,29 @@ public class TestCarte {
 	}
 
 	private static void creerCarte() {
-		 int id_restaurant;
-		System.out.println("Vous avez choisi d'ajouter une carte");
+	    int id_restaurant;
+	    System.out.println("Vous avez choisi d'ajouter une carte");
 
-		System.out.println("Veuillez saisir son nom");
-		String nom = scan.nextLine();
+	    System.out.println("Veuillez saisir son nom");
+	    String nom = scan.nextLine();
 
-		System.out.println("Veuillez saisir son id_restaurant");
-		 id_restaurant = scan.nextInt();
+	    try {
+	        System.out.println("Veuillez saisir son id_restaurant");
+	        id_restaurant = Integer.parseInt(scan.nextLine());
 
-		try {
-
-			Restaurant restaurantId = restaurantBLL.selectById(id_restaurant);
-			Carte carteAjoute = bll.insert(nom, restaurantId);
-			System.out.println("Plat ajouté" + carteAjoute);
-		}
-		
-		
-		catch (BLLException e) {
-			System.out.println("Une erreur est survenue :");
-			for (String erreur : e.getErreurs()) {
-				System.out.println("\t" + erreur);
-			}
-			System.out.println(e.getMessage());
-
-		}
+	        Restaurant restaurantId = restaurantBLL.selectById(id_restaurant);
+	        Carte carteAjoute = bll.insert(nom, restaurantId);
+	        System.out.println("Plat ajouté" + carteAjoute);
+	    } catch (NumberFormatException e) {
+	        System.out.println("Erreur : l'id saisi est est incorrect");
+	    } catch (BLLException e) {
+	        System.out.println("Une erreur est survenue :");
+	        for (String erreur : e.getErreurs()) {
+	            System.out.println("\t" + erreur);
+	        }
+	        System.out.println(e.getMessage());
+	    }
 	}
+
 
 }
