@@ -29,7 +29,7 @@ public class TestPlat {
 		// creerPlat();
 		// trouverPlatParID();
 		// modifierPlat();
-
+		// supprimerPlat();
 
 	}
 
@@ -141,9 +141,9 @@ public class TestPlat {
 			plat.setCategorie(categorie);
 			plat.setImage_plat_url(image_plat_url);
 			plat.setCarte(idcarte);
-			
-			 bll.update(plat);
-			System.out.println("Plat modifié" );
+
+			bll.update(plat);
+			System.out.println("Plat modifié");
 
 		} catch (BLLException e) {
 			System.out.println("Une erreur est survenue :");
@@ -152,6 +152,27 @@ public class TestPlat {
 			}
 			System.out.println(e.getMessage());
 		}
+	}
+
+	private static void supprimerPlat() {
+		System.out.println("Vous avez choisi de supprimer un plat");
+		System.out.println("Veuillez saisir l'id du plat à supprimer");
+
+		int id = 0;
+		try {
+			id = scan.nextInt();
+		} catch (java.util.InputMismatchException e) {
+			System.out.println("Erreur : Veuillez saisir un nombre entier pour l'id_carte.");
+		}
+
+		try {
+			bll.delete(id);
+			System.out.println("Le restaurant a bien été supprimé");
+		} catch (BLLException e) {
+			System.out.println("Il est interdit de supprimer ce restaurant ou ce restaurant n'existe pas.\n"
+					+ "Pour être supprimer un restaurant ne dois plus avoir ni tables, ni carte, ni réservations, ni employés");
+		}
+
 	}
 
 }
