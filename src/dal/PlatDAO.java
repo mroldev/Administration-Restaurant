@@ -99,7 +99,6 @@ public class PlatDAO {
 	}
 
 	public void insert(Plat plat) {
-		// TODO Auto-generated method stub
 
 	}
 

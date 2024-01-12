@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bo.Carte;
-import bo.Carte;
+import bo.Restaurant;
 
 public class CarteDAO {
 	private static final String TABLE_NAME = "cartes";
 
 	private static final String SELECT = "SELECT * FROM " + TABLE_NAME;
-	private static final String SELECT_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE id = ?";
+	private static final String SELECT_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE id = ? ";
+	private static final String INSERT = "INSERT INTO " + TABLE_NAME + "(nom,id_restaurant) VALUES (?,?)";
 
 	private Connection cnx;
 
@@ -22,6 +23,7 @@ public class CarteDAO {
 		cnx = ConnectionProvider.getConnection();
 	}
 
+	// Select all
 	public List<Carte> selectAll() throws DALException {
 		List<Carte> cartes = new ArrayList<Carte>();
 
@@ -30,9 +32,11 @@ public class CarteDAO {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Carte carte = new Carte();
+				Restaurant restaurant = new Restaurant();
+
 				carte.setId(rs.getInt("id"));
 				carte.setNom(rs.getString("nom"));
-				carte.setIdRestaurant(rs.getInt("id"));
+				restaurant.setId(rs.getInt("id_restaurant"));
 				cartes.add(carte);
 			}
 
@@ -42,6 +46,7 @@ public class CarteDAO {
 		return cartes;
 	}
 
+	// Select by id
 	public Carte selectById(int id) throws DALException {
 		Carte carte = null;
 		try {
@@ -50,9 +55,11 @@ public class CarteDAO {
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				carte = new Carte();
+				Restaurant restaurant = new Restaurant();
+
 				carte.setId(rs.getInt("id"));
 				carte.setNom(rs.getString("nom"));
-				carte.setIdRestaurant(rs.getInt("id"));
+				restaurant.setId(rs.getInt("id_restaurant"));
 			}
 			if (carte == null)
 				throw new DALException("Aucun carte ne porte cet ID", null);
@@ -61,4 +68,24 @@ public class CarteDAO {
 		}
 		return carte;
 	}
+
+	// insert
+	public void insert(Carte carte) throws DALException {
+		try {
+			PreparedStatement ps = cnx.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
+
+			ps.setString(1, carte.getNom());
+			ps.setInt(2, carte.getRestaurant().getId());
+			ps.executeUpdate();
+			ResultSet rs = ps.getGeneratedKeys();
+			if (rs.next()) {
+				int id = rs.getInt(1);
+				carte.setId(id);
+			}
+		} catch (SQLException e) {
+			throw new DALException("Impossible d'inserer les donnees.", e);
+		}
+
+	}
+
 }

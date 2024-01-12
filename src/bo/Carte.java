@@ -3,26 +3,21 @@ package bo;
 public class Carte {
 	private int id;
 	private String nom;
-	private int idRestaurant;
+	private Restaurant restaurant;
 
 	public Carte() {
 
 	}
 
-	public Carte(String nom, int idRestaurant) {
+	public Carte(String nom, Restaurant restaurant) {
 		this.nom = nom;
-		this.idRestaurant = idRestaurant;
+		this.restaurant = restaurant;
 	}
 
-	public Carte(int id, String nom, int idRestaurant) {
+	public Carte(int id, String nom, Restaurant restaurant) {
 		this.id = id;
 		this.nom = nom;
-		this.idRestaurant = idRestaurant;
-	}
-
-
-	public Carte(String nom) {
-		this.nom = nom;
+		this.restaurant = restaurant;
 	}
 
 	public int getId() {
@@ -41,19 +36,21 @@ public class Carte {
 		this.nom = nom;
 	}
 
-	public int getIdRestaurant() {
-		return idRestaurant;
+	public Restaurant getRestaurant() {
+		return restaurant;
 	}
 
-	public void setIdRestaurant(int idRestaurant) {
-		this.idRestaurant = idRestaurant;
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
 	}
-
 
 	@Override
 	public String toString() {
-		return "Carte [id=" + id + ", nom=" + nom + ", idRestaurant=" + idRestaurant + "]";
+		return "Carte [id=" + id + ", nom=" + nom + ", restaurant=" + restaurant + "]";
 	}
+
+
+	
 
 
 }
