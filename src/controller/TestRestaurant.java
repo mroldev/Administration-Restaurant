@@ -23,10 +23,10 @@ public class TestRestaurant {
 
 		scan = new Scanner(System.in);
 		// listerRestaurant();
-		// creerRestaurant();
+		 creerRestaurant();
 		// trouverRestaurantParID();
 		// modifierRestaurant();
-		supprimerRestaurant();
+		//supprimerRestaurant();
 	}
 
 	private static void listerRestaurant() {
@@ -61,11 +61,7 @@ public class TestRestaurant {
 		try {
 			heureOuverture = LocalTime.parse(heureOuvertureStr, dtf);
 			heureFermeture = LocalTime.parse(heureFermetureStr, dtf);
-		} catch (DateTimeParseException e) {
-			System.out.println("La date n'est pas au bon format hh:mm");
-		}
-
-		try {
+			try {
 			bll.insert(nom, adresse, heureOuverture, heureFermeture);
 			System.out.println("Restaurant ajouté");
 		} catch (BLLException e) {
@@ -74,6 +70,11 @@ public class TestRestaurant {
 				System.out.println("\t" + erreur);
 			}
 		}
+		} catch (DateTimeParseException e) {
+			System.out.println("La date n'est pas au bon format hh:mm");
+		}
+
+		
 
 	}
 
