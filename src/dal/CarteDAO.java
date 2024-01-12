@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bo.Carte;
+import bo.Plat;
 import bo.Restaurant;
 
 public class CarteDAO {
@@ -15,7 +16,8 @@ public class CarteDAO {
 
 	private static final String SELECT = "SELECT * FROM " + TABLE_NAME;
 	private static final String SELECT_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE id = ? ";
-	private static final String INSERT = "INSERT INTO " + TABLE_NAME + "(nom,id_restaurant) VALUES (?,?)";
+	private static final String INSERT = "INSERT INTO " + TABLE_NAME + "(nom ,id_restaurant) VALUES (?,?)";
+	private static final String UPDATE = "UPDATE " + TABLE_NAME + " SET nom = ?,  id_restaurant = ?  WHERE id = ?";
 
 	private Connection cnx;
 
@@ -86,6 +88,19 @@ public class CarteDAO {
 			throw new DALException("Impossible d'inserer les donnees.", e);
 		}
 
+	}
+
+	// Modification
+	public void update(Carte carte) throws DALException {
+		try {
+			PreparedStatement ps = cnx.prepareStatement(UPDATE);
+			ps.setString(1, carte.getNom());
+			ps.setInt(2, carte.getRestaurant().getId());
+			ps.setInt(3, carte.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			throw new DALException("Impossible de mettre a jour les informations pour l'id " + carte.getId(), e);
+		}
 	}
 
 }
