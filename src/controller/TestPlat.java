@@ -26,8 +26,9 @@ public class TestPlat {
 		}
 
 		// listerPlat();
-		// selectionDeUnPlat();
 		// creerPlat();
+		// trouverPlatParID();
+		 modifierPlat();
 	}
 
 	// listerPlat();
@@ -43,16 +44,14 @@ public class TestPlat {
 		}
 	}
 
-	// selectionDeUnPlat();
-	private static void selectionDeUnPlat() {
+	// trouverPlatParID();
+	private static void trouverPlatParID() {
 		System.out.println("Indiquer un id");
 		int id = scan.nextInt();
 		scan.nextLine();
-
 		try {
 			Plat platSelectionne = bll.selectById(id);
-
-			System.out.println("Plat Selectionne" + platSelectionne);
+			System.out.println("Plat Selectionne :" + platSelectionne);
 		} catch (BLLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -89,6 +88,60 @@ public class TestPlat {
 			Carte carteid = carteBll.selectById(id_carte);
 			Plat platAjoute = bll.insert(nom, prix, description, categorie, image_plat_url, carteid);
 			System.out.println("Plat ajouté" + platAjoute);
+
+		} catch (BLLException e) {
+			System.out.println("Une erreur est survenue :");
+			for (String erreur : e.getErreurs()) {
+				System.out.println("\t" + erreur);
+			}
+			System.out.println(e.getMessage());
+		}
+	}
+
+	// modifierPlat
+
+	private static void modifierPlat() {
+		System.out.println("Vous avez choisi de modifier un plat");
+
+		System.out.println("Veuillez saisir son ID");
+		int id = scan.nextInt();
+		scan.nextLine();
+
+		System.out.println("Veuillez saisir son nouveau nom");
+		String nom = scan.nextLine();
+
+		System.out.println("Veuillez saisir son nouveau prix (ex :  12,2 )");
+		String prix = scan.nextLine();
+
+		System.out.println("Veuillez saisir sa nouvelle description");
+		String description = scan.nextLine();
+
+		System.out.println("Veuillez saisir sa nouvelle categorie(ENTREE, PLAT, DESSERT ou DESSERT)");
+		String categorie = scan.nextLine();
+
+		System.out.println("Veuillez saisir sa nouvelle image ");
+		String image_plat_url = scan.nextLine();
+
+		System.out.println("Veuillez saisir son nouveau id_carte");
+		int id_carte = 0;
+		try {
+			id_carte = scan.nextInt();
+		} catch (java.util.InputMismatchException e) {
+			System.out.println("Erreur : Veuillez saisir un nombre entier pour l'id_carte.");
+		}
+
+		try {
+			Carte idcarte = carteBll.selectById(id_carte);
+			Plat plat = bll.selectById(id);
+			plat.setNom(nom);
+			plat.setPrix(prix);
+			plat.setDescription(description);
+			plat.setCategorie(categorie);
+			plat.setImage_plat_url(image_plat_url);
+			plat.setCarte(idcarte);
+			
+			 bll.update(plat);
+			System.out.println("Plat modifié" );
 
 		} catch (BLLException e) {
 			System.out.println("Une erreur est survenue :");

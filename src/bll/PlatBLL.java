@@ -60,7 +60,7 @@ public class PlatBLL {
 		if (blleException.getErreurs().size() > 0) {
 			throw blleException;
 		}
-		
+
 		Plat plat = new Plat();
 
 		plat = new Plat(nom, prix, description, categorie, image_plat_url, id_carte);
@@ -71,6 +71,16 @@ public class PlatBLL {
 			throw new BLLException("Echec de l'insertion", e);
 		}
 		return plat;
+	}
+
+	// UPDATE
+	public void update(Plat plat) throws BLLException {
+
+		try {
+			dao.update(plat);
+		} catch (DALException e) {
+			throw new BLLException("Echec de la mise a jour du plat", e);
+		}
 	}
 
 }

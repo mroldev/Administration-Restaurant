@@ -1,6 +1,7 @@
 package dal;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +17,9 @@ public class PlatDAO {
 	private static final String SELECT_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE id = ?";
 	private static final String INSERT = "INSERT INTO " + TABLE_NAME
 			+ "( nom, prix, description, categorie, image_plat_url, id_carte) VALUES (?,?,?,?,?,?)";
+	private static final String UPDATE = "UPDATE " + TABLE_NAME
+			+ " SET nom = ?, prix = ?, description = ?, categorie = ?, image_plat_url = ?, id_carte = ?  WHERE id = ?";
+
 	private Connection cnx;
 
 	// Connection
@@ -106,4 +110,20 @@ public class PlatDAO {
 
 	}
 
+	// Modification
+	public void update(Plat plat) throws DALException {
+		try {
+			PreparedStatement ps = cnx.prepareStatement(UPDATE);
+			ps.setString(1, plat.getNom());
+			ps.setString(2, plat.getPrix());
+			ps.setString(3, plat.getDescription());
+			ps.setString(4, plat.getCategorie());
+			ps.setString(5, plat.getImage_plat_url());
+			ps.setInt(6, plat.getCarte().getId());
+			ps.setInt(7, plat.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			throw new DALException("Impossible de mettre a jour les informations pour l'id " + plat.getId(), e);
+		}
+	}
 }
