@@ -14,8 +14,8 @@ public class TableDAO {
 	private static final String INSERT = "INSERT INTO " + TABLE_NAME
 			+ " (numero, nombre_place, etat, id_restaurant) VALUES (?,?,?,?)";
 //	private static final String SELECT_BY_ID = "SELECT * FROM " + TABLE_NAME + " WHERE id = ?";
-	private static final String UPDATE = "UPDATE " + TABLE_NAME
-			+ " SET etat = ? WHERE id = ?"; //Il n'y a que l'état de la table 
+	private static final String UPDATE = "UPDATE " + TABLE_NAME + " SET etat = ? WHERE id = ?"; // Il n'y a que l'état
+																								// de la table
 	private static final String DELETE = "DELETE FROM" + TABLE_NAME + " WHERE id = ?";
 
 	private Connection cnx;
@@ -23,7 +23,7 @@ public class TableDAO {
 	public TableDAO() throws DALException {
 		cnx = ConnectionProvider.getConnection();
 	}
-	
+
 	public void insert(Table table) throws DALException {
 		try {
 			// L'ajout de RETURN_GENERATED_KEYS permet de récupérer l'id généré par la base
@@ -32,7 +32,7 @@ public class TableDAO {
 			ps.setInt(2, table.getNombrePlace());
 			ps.setString(3, table.getEtat());
 			ps.setInt(4, table.getIdRestaurant());
-		
+
 			ps.executeUpdate();
 
 			// Le bloc suivant permet de faire la récupération de l'id
@@ -43,6 +43,19 @@ public class TableDAO {
 			}
 		} catch (SQLException e) {
 			throw new DALException("Impossible d'inserer les donnees.", e);
+		}
+	}
+
+	public void delete(int id) throws DALException {
+		try {
+			PreparedStatement ps = cnx.prepareStatement(DELETE);
+			ps.setInt(1, id);
+			int nbLignesSupprimees = ps.executeUpdate();
+			if (nbLignesSupprimees == 0) {
+				throw new DALException("Echec de suppression de la table d'id " + id, null);
+			}
+		} catch (SQLException e) {
+			throw new DALException("Impossible de supprimer la table d'id " + id, e);
 		}
 	}
 }
