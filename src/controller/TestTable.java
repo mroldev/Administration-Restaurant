@@ -32,7 +32,9 @@ public class TestTable {
 		}
 
 		scan = new Scanner(System.in);
-		creerRestaurantavecTable();
+
+//		creerRestaurantavecTable();
+		supprimerTable();
 
 	}
 
@@ -109,6 +111,22 @@ public class TestTable {
 			Table nouvelleTable = tablebll.insert(numeroTable, nombrePlacesTable, etat, idRestaurantCreer);
 			System.out.println("La table d'ID :" + nouvelleTable.getId() + " vient d'être ajoutée au Restaurant d'ID : "
 					+ idRestaurantCreer);
+		}
+	}
+
+	public static void supprimerTable() {
+
+		System.out.println("Vous avez choisi de supprimer une table");
+		System.out.println("Veuillez saisir l'id de la table à supprimer");
+		int id = scan.nextInt();
+		scan.nextLine();
+
+		try {
+			tablebll.delete(id);
+			System.out.println("La table a bien été supprimé");
+		} catch (BLLException e) {
+			System.out.println("Il est interdit de supprimer cette table ou cette table n'existe pas.\n"
+					+ "Pour être supprimer une table ne dois plus avoir ni commandes, ni reservations");
 		}
 	}
 }
