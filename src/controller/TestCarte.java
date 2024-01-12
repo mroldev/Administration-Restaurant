@@ -4,21 +4,26 @@ import java.util.List;
 import java.util.Scanner;
 import bll.BLLException;
 import bll.CarteBLL;
+import bll.RestaurantBLL;
 import bo.Carte;
+import bo.Restaurant;
 
 public class TestCarte {
 	private static CarteBLL bll;
 	private static Scanner scan;
+	private static RestaurantBLL restaurantBLL;
 
 	public static void main(String[] args) {
 		try {
 			bll = new CarteBLL();
+			restaurantBLL = new RestaurantBLL();
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
 		scan = new Scanner(System.in);
 		// listerCartes();
-		trouverCarteParID();
+		creerCarte();
+		// trouverCarteParID();
 	}
 
 	private static void listerCartes() {
@@ -33,9 +38,9 @@ public class TestCarte {
 	}
 
 	private static void trouverCarteParID() {
-		System.out.println("Vous avez choisi de chercher un restaurant par son ID");
+		System.out.println("Vous avez choisi de chercher une carte par son ID");
 
-		System.out.println("Veuillez saisir son ID");
+		System.out.println("Veuillez saisir  son ID");
 		int id = scan.nextInt();
 		scan.nextLine();
 		try {
@@ -46,5 +51,31 @@ public class TestCarte {
 			;
 		}
 	}
+
+	private static void creerCarte() {
+	    int id_restaurant;
+	    System.out.println("Vous avez choisi d'ajouter une carte");
+
+	    System.out.println("Veuillez saisir son nom");
+	    String nom = scan.nextLine();
+
+	    try {
+	        System.out.println("Veuillez saisir son id_restaurant");
+	        id_restaurant = Integer.parseInt(scan.nextLine());
+
+	        Restaurant restaurantId = restaurantBLL.selectById(id_restaurant);
+	        Carte carteAjoute = bll.insert(nom, restaurantId);
+	        System.out.println("Plat ajouté" + carteAjoute);
+	    } catch (NumberFormatException e) {
+	        System.out.println("Erreur : l'id saisi est est incorrect");
+	    } catch (BLLException e) {
+	        System.out.println("Une erreur est survenue :");
+	        for (String erreur : e.getErreurs()) {
+	            System.out.println("\t" + erreur);
+	        }
+	        System.out.println(e.getMessage());
+	    }
+	}
+
 
 }

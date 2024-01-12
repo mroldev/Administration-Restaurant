@@ -34,4 +34,31 @@ public class CarteBLL {
 		}
 	}
 
+	public Carte insert(String nom, Restaurant id_restaurant) throws BLLException {
+
+		BLLException blleException = new BLLException();
+		if (nom.length() < 2) {
+			blleException.ajouterErreur("Le nom doit faire au moins 2 caractères");
+		}
+
+		if (nom.length() > 50) {
+			blleException.ajouterErreur("Le nom doit faire maximum 50 caractères");
+		}
+
+		if (blleException.getErreurs().size() > 0) {
+			throw blleException;
+		}
+		Carte carte = new Carte();
+		carte = new Carte(nom,id_restaurant);
+		try {
+			dao.insert(carte);
+			
+		} catch (DALException e) {
+
+			throw new BLLException("Echec de l'insertion", e);
+		}
+
+		return carte;
+
+	}
 }
