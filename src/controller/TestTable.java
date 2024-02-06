@@ -19,6 +19,7 @@ public class TestTable {
 	private static TableBLL tablebll;
 
 	public static void main(String[] args) {
+		
 		try {
 			bll = new RestaurantBLL();
 		} catch (BLLException e) {
@@ -38,7 +39,7 @@ public class TestTable {
 
 	}
 
-	private static void creerRestaurantavecTable() {
+	public static void creerRestaurantavecTable() {
 		System.out.println("Vous avez choisi d'ajouter un restaurant");
 
 		System.out.println("Veuillez saisir son nom");
