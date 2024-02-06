@@ -13,7 +13,7 @@ import bo.Restaurant;
 public class TestRestaurant {
 	private static Scanner scan;
 	private static RestaurantBLL bll;
-	//Mettre en staic ci-dessous pour pouvoir l'utiliser
+	//Mettre en static ci-dessous pour pouvoir l'utiliser
 	static {
 		try {
 			bll = new RestaurantBLL();
