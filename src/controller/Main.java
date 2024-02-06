@@ -20,7 +20,7 @@ public class Main {
 				TestTable.creerRestaurantavecTable(); // OK
 				break;
 			case 2:
-
+				TestRestaurant.modifierRestaurant();
 				break;
 			case 3:
 				System.out.println("3. Supprimer un restaurant existant");
@@ -32,7 +32,7 @@ public class Main {
 				System.out.println("5. Modifier une carte");
 				break;
 			case 6:
-				System.out.println("Byebye");
+				System.out.println("Byebye"); //Ajouter err si lettre
 				break;
 				
 			default:
