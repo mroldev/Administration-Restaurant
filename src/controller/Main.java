@@ -22,7 +22,8 @@ public class Main {
 				// Rajouter le Do While s'il y a des erreures dans la saisie pour que l'utilisateur puisse refaire sa saisie
 				break;
 			case 2:
-				System.out.println("2. Modifier un restaurant existant");
+				TestTable.creerRestaurantavecTable(); //A FAIRE 
+
 				break;
 			case 3:
 				System.out.println("3. Supprimer un restaurant existant");
@@ -42,7 +43,7 @@ public class Main {
 				break;
 			}
 		} while (choix != 6);
-
+          //Ajouter : voulez vous recommencer le menu ? 
 		scan.close();
 
 	}
