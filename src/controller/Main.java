@@ -2,9 +2,6 @@ package controller;
 
 import java.util.Scanner;
 
-import bo.Restaurant;
-import controller.TestRestaurant;
-
 public class Main {
 	private static Scanner scan;
 
@@ -30,6 +27,7 @@ public class Main {
 				break;
 			case 4:
 				System.out.println("4. Créer une carte");
+				TestCarte.creerCarte();
 				break;
 			case 5:
 				System.out.println("5. Modifier une carte");

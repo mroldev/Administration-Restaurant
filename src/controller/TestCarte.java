@@ -13,18 +13,16 @@ public class TestCarte {
 	private static Scanner scan;
 	private static RestaurantBLL restaurantBLL;
 
-	public static void main(String[] args) {
+
+	
+	static {
 		try {
 			bll = new CarteBLL();
-			restaurantBLL = new RestaurantBLL();
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
+
 		scan = new Scanner(System.in);
-		// listerCartes();
-		// creerCarte();
-		// trouverCarteParID();
-		modifierCarte();
 	}
 
 	private static void listerCartes() {
@@ -53,7 +51,7 @@ public class TestCarte {
 		}
 	}
 
-	private static void creerCarte() {
+	public static void creerCarte() {
 		int id_restaurant;
 		System.out.println("Vous avez choisi d'ajouter une carte");
 
