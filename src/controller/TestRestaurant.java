@@ -20,7 +20,6 @@ public class TestRestaurant {
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-
 		scan = new Scanner(System.in);
 	}
 
@@ -148,5 +147,10 @@ public class TestRestaurant {
 			System.out.println("Il est interdit de supprimer ce restaurant ou ce restaurant n'existe pas.\n"
 					+ "Pour être supprimer un restaurant ne dois plus avoir ni tables, ni carte, ni réservations, ni employés");
 		}
+	}
+
+	public static void creerRestaurantavecTable() {
+		// TODO Auto-generated method stub
+		
 	}
 }

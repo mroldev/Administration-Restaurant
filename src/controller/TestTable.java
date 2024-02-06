@@ -14,18 +14,17 @@ import bo.Table;
 
 public class TestTable {
 
-	private static Scanner scan;
+
+	private static Scanner scan = new Scanner(System.in);
 	private static RestaurantBLL bll;
 	private static TableBLL tablebll;
 
-	public static void main(String[] args) {
-		
+	static {	
 		try {
 			bll = new RestaurantBLL();
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
-
 		try {
 			tablebll = new TableBLL();
 		} catch (BLLException e) {
@@ -33,15 +32,15 @@ public class TestTable {
 		}
 
 		scan = new Scanner(System.in);
-
-//		creerRestaurantavecTable();
-		supprimerTable();
-
 	}
+		// creerRestaurantavecTable();
+		//supprimerTable();
+
 
 	public static void creerRestaurantavecTable() {
 		System.out.println("Vous avez choisi d'ajouter un restaurant");
-
+       
+        
 		System.out.println("Veuillez saisir son nom");
 		String nom = scan.nextLine();
 
@@ -79,7 +78,7 @@ public class TestTable {
 
 	}
 
-	private static void ajouterTableARestaurant(int idRestaurantCreer) throws BLLException {
+	public static void ajouterTableARestaurant(int idRestaurantCreer) throws BLLException {
 		System.out.println("Veuillez saisir le nombre de tables à créer");
 		int nombreTablesACreer = 0;
 		try {

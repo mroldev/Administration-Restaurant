@@ -2,11 +2,10 @@ package controller;
 
 import java.util.Scanner;
 
-import bo.Restaurant;
-import controller.TestRestaurant;
 
 public class Main {
 	private static Scanner scan;
+
 
 	public static void main(String[] args) {
 		System.out.println("Bienvenue dans notre application Administration restaurant");
@@ -18,11 +17,9 @@ public class Main {
 			choix = afficherMenu();
 			switch (choix) {
 			case 1:
-				TestRestaurant.creerRestaurant();
-				// Rajouter le Do While s'il y a des erreures dans la saisie pour que l'utilisateur puisse refaire sa saisie
+				TestTable.creerRestaurantavecTable(); // OK
 				break;
 			case 2:
-				TestTable.creerRestaurantavecTable(); //A FAIRE 
 
 				break;
 			case 3:
@@ -43,7 +40,6 @@ public class Main {
 				break;
 			}
 		} while (choix != 6);
-          //Ajouter : voulez vous recommencer le menu ? 
 		scan.close();
 
 	}
