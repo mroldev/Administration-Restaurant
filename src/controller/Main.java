@@ -27,10 +27,12 @@ public class Main {
 				break;
 			case 4:{
 				System.out.println("4. Créer une carte");
-				TestCarte.creerCarte();
+				TestCarte.creerCarte(); // VOIR SI ON PEUT AUSSI AJOUTER LES PLATS
 				break;}
 			case 5:
 				System.out.println("5. Modifier une carte");
+				TestCarte.modifierCarte(); // ON MODIFIE UNIQUEMENT LE NOM DE LA CARTE ET SON RESTAUTANT.
+				// VOIR SI ON PEUT MODIFIER LES PLATS SI POSSIBLE.
 				break;
 			case 6:
 				System.out.println("Byebye"); //Ajouter err si lettre
