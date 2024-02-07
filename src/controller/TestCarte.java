@@ -18,6 +18,7 @@ public class TestCarte {
 	static {
 		try {
 			bll = new CarteBLL();
+			restaurantBLL = new RestaurantBLL();
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
