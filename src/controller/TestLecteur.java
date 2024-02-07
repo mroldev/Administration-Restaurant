@@ -10,17 +10,18 @@ import controller.lecteur.LecteurCSVException;
 
 public class TestLecteur {
 	private static RestaurantBLL bll;
-
-	public static void main(String[] args) {
-
-		LecteurCSV lecteur = new LecteurCSV();
-		List<Restaurant> listeRestaurants;
+	static LecteurCSV lecteur = new LecteurCSV();
+	static List<Restaurant> listeRestaurants;
+	
+	static {
 		try {
 			try {
 				bll = new RestaurantBLL();
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}
+			  System.out.println("Bravo vous venez d'inserer ces restaurant");
+
 			listeRestaurants = lecteur.lireCSV("data.csv", true);
 			for (Restaurant current : listeRestaurants) {
 				try {
@@ -40,4 +41,10 @@ public class TestLecteur {
 			}
 		}
 	}
+
+	public static  List<Restaurant> listeRestaurants() {
+		  return listeRestaurants;
+		
+	}
+
 }
