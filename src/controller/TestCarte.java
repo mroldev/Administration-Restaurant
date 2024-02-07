@@ -18,6 +18,7 @@ public class TestCarte {
 	static {
 		try {
 			bll = new CarteBLL();
+			restaurantBLL = new RestaurantBLL();
 		} catch (BLLException e) {
 			e.printStackTrace();
 		}
@@ -76,7 +77,7 @@ public class TestCarte {
 		}
 	}
 
-	private static void modifierCarte() {
+	public static void modifierCarte() {
 		int id_restaurant;
 		System.out.println("Vous avez choisi de modifier  une carte");
 		System.out.println("Veuillez saisir son ID");
