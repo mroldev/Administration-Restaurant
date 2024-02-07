@@ -36,6 +36,10 @@ public class Main {
 					break;
 				case "b":
 					TestLecteur.listeRestaurants();
+				break;
+				default:
+					System.out.println("Saisie non valide");
+					break;
 				}
 				break;
 			case 2:
@@ -54,11 +58,11 @@ public class Main {
 				// VOIR SI ON PEUT MODIFIER LES PLATS SI POSSIBLE.
 				break;
 			case 6:
-				System.out.println("Byebye"); // Ajouter err si lettre
+				System.out.println("Byebye"); 
 				break;
 
 			default:
-				System.out.println("Saisie non valide");
+				System.out.println("Saisie non valide");// AJOUTER GESTION ERREUR SI ON MET UNE LETTRE
 				break;
 			}
 		} while (choix != 6);
