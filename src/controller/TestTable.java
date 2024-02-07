@@ -31,7 +31,6 @@ public class TestTable {
 			e.printStackTrace();
 		}
 
-		scan = new Scanner(System.in);
 	}
 		// creerRestaurantavecTable();
 		//supprimerTable();
