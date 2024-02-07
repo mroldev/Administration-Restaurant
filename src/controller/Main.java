@@ -23,7 +23,7 @@ public class Main {
 				TestRestaurant.modifierRestaurant();
 				break;
 			case 3:
-				System.out.println("3. Supprimer un restaurant existant");
+				TestRestaurant.supprimerRestaurant();
 				break;
 			case 4:
 				System.out.println("4. Créer une carte");
