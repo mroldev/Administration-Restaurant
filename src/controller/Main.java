@@ -25,10 +25,10 @@ public class Main {
 			case 3:
 				System.out.println("3. Supprimer un restaurant existant");
 				break;
-			case 4:
+			case 4:{
 				System.out.println("4. Créer une carte");
 				TestCarte.creerCarte();
-				break;
+				break;}
 			case 5:
 				System.out.println("5. Modifier une carte");
 				break;
