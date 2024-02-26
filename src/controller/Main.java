@@ -25,7 +25,7 @@ public class Main {
 			choix = afficherMenu();
 			switch (choix) {
 			case 1:
-				System.out.println(BLUE + "1. Ajouter un restaurant");
+				System.out.println(BLUE+"Ajouter un restaurant");
 				System.out.println("    a. Saisie manuelle");
 				System.out.println("    b. Saisie automatique");
 				String choixSaisie = scan.next();
@@ -49,20 +49,19 @@ public class Main {
 				TestRestaurant.supprimerRestaurant();
 				break;
 			case 4:{
-				System.out.println("4. Créer une carte");
-				TestCarte.creerCarte(); // VOIR SI ON PEUT AUSSI AJOUTER LES PLATS
+				System.out.println("Créer une carte");
+				TestCarte.creerCarte(); 
 				break;}
 			case 5:
-				System.out.println("5. Modifier une carte");
-				TestCarte.modifierCarte(); // ON MODIFIE UNIQUEMENT LE NOM DE LA CARTE ET SON RESTAUTANT.
-				// VOIR SI ON PEUT MODIFIER LES PLATS SI POSSIBLE.
+				System.out.println("Modifier une carte");
+				TestCarte.modifierCarte(); 
 				break;
 			case 6:
 				System.out.println("Byebye"); 
 				break;
 
 			default:
-				System.out.println("Saisie non valide");// AJOUTER GESTION ERREUR SI ON MET UNE LETTRE
+				System.out.println("Saisie non valide");
 				break;
 			}
 		} while (choix != 6);
@@ -71,12 +70,12 @@ public class Main {
 	}
 
 	private static int afficherMenu() {
-		System.out.println(PURPLE + "1. " + RESET + CYAN + "Ajouter un restaurant" + RESET);
+		System.out.println(PURPLE + "1." + RESET + CYAN + "Ajouter un restaurant" + RESET);
 		System.out.println(PURPLE + "2." + RESET + CYAN + "Modifier un restaurant existant" + RESET);
 		System.out.println(PURPLE + "3." + RESET + RED + "Supprimer un restaurant existant" + RESET);
-		System.out.println(PURPLE + "4." + RESET + CYAN + "4. Créer une carte");
-		System.out.println(PURPLE + "5." + RESET + CYAN + "5. Modifier une carte" + RESET);
-		System.out.println(PURPLE + "6." + RESET + CYAN + "6. Quitter" + RESET);
+		System.out.println(PURPLE + "4." + RESET + CYAN + "Créer une carte");
+		System.out.println(PURPLE + "5." + RESET + CYAN + "Modifier une carte" + RESET);
+		System.out.println(PURPLE + "6." + RESET + CYAN + "Quitter" + RESET);
 		int choix = scan.nextInt();
 		scan.nextLine();
 		return choix;
