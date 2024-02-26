@@ -97,7 +97,7 @@ public class TestCarte {
 			carte.setRestaurant(idrestauraunt);
 
 			bll.update(carte);
-			System.out.println("Carte ajouté");
+			System.out.println("Carte modifiée");
 		} catch (NumberFormatException e) {
 			System.out.println("Erreur : l'id saisi est est incorrect");
 		} catch (BLLException e) {
