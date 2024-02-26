@@ -19,7 +19,7 @@ public class Main {
 		System.out.println(BLUE + "Bienvenue dans notre application Administration restaurant");
 		scan = new Scanner(System.in);
 
-		System.out.println("Veuillez choisir l'action à réaliser");
+		System.out.println("Veuillez choisir l'action à réaliser"); 
 		int choix;
 		do {
 			choix = afficherMenu();
